@@ -8,7 +8,7 @@
 
 <meta name="author" content="Maarja Osi-Baumeister">
 
-<title>hdglm</title>
+<title>hddglm</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a>
   <ul class="collapse">
-  <li><a href="#installing-the-package-hdglm" id="toc-installing-the-package-hdglm" class="nav-link" data-scroll-target="#installing-the-package-hdglm">Installing the package hdglm</a></li>
+  <li><a href="#installing-the-package-hddglm" id="toc-installing-the-package-hddglm" class="nav-link" data-scroll-target="#installing-the-package-hddglm">Installing the package hddglm</a></li>
   </ul></li>
   <li><a href="#artificial-data" id="toc-artificial-data" class="nav-link" data-scroll-target="#artificial-data">Artificial Data</a></li>
   <li><a href="#setting-parameters" id="toc-setting-parameters" class="nav-link" data-scroll-target="#setting-parameters">Setting parameters</a>
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">hdglm</h1>
+<h1 class="title">hddglm</h1>
 <p class="subtitle lead">High-Dimensional Dynamic Generalized Linear Models</p>
 </div>
 
@@ -134,19 +134,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>This document contains a guide on the R-package <code>hdglm</code> developed as part of the master thesis <em>High-Dimensional Dynamic Generalized Linear Models: A Bayesian Approach</em>. We demonstrate the steps to that were also used for simulation study from the thesis (Chapter 4).</p>
+<p>This document contains a guide on the R-package <code>hddglm</code> developed as part of the master thesis <em>High-Dimensional Dynamic Generalized Linear Models: A Bayesian Approach</em>. We demonstrate the steps to that were also used for simulation study from the thesis (Chapter 4).</p>
 <p>This document was created using quarto.</p>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<section id="installing-the-package-hdglm" class="level3">
-<h3 class="anchored" data-anchor-id="installing-the-package-hdglm">Installing the package hdglm</h3>
-<p>As the first step, download the binary file <code>hdglm.zip</code> from <a href="https://github.com/maarjaosi/hdDglm/blob/main/hdDglm.zip" class="uri">https://github.com/maarjaosi/hdDglm/blob/main/hdglm.zip</a>. Then install the package by calling the function <code>install.packages()</code> with the path to the downloaded file. In the example below the file is in the Download order. <strong>The path needs to be changed to the file location on your computer.</strong></p>
+<section id="installing-the-package-hddglm" class="level3">
+<h3 class="anchored" data-anchor-id="installing-the-package-hddglm">Installing the package hddglm</h3>
+<p>As the first step, download the binary file <code>hddglm.zip</code> from <a href="https://github.com/maarjaosi/hdDglm/blob/main/hdDglm.zip" class="uri">https://github.com/maarjaosi/hddglm/blob/main/hddglm.zip</a>. Then install the package by calling the function <code>install.packages()</code> with the path to the downloaded file. In the example below the file is in the Download order. <strong>The path needs to be changed to the file location on your computer.</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"~/Downloads/hdglm.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"~/Downloads/hddglm.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When the installation is done you can load the package. We also load the package <code>MASS</code> to sample from the multivariate normal distribution when creating the artificial data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hdglm)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hddglm)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -278,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We run the Gibbs sampler for the dynamic binary logistic model by calling the function <code>binomGibbSampler()</code>. We also record the time it took for the function to run.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>start_time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>beta_chain <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">binomDglmGibbs</span>(<span class="at">model =</span> <span class="st">"binom"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>beta_chain <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">binomDglmGibbs</span>(<span class="at">model =</span> <span class="st">"binom"</span>,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">K  =</span> K,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                             <span class="at">y =</span> y,</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">x =</span> x,</span>
@@ -302,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">#get the chain for beta_{ti}</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        index_covariate <span class="ot">&lt;-</span> <span class="fu">seq</span>(i, (K<span class="dv">-1</span>)<span class="sc">*</span>p <span class="sc">+</span> i , p)</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        beta_ti <span class="ot">&lt;-</span> beta_chain[t, index_covariate][<span class="dv">500</span><span class="sc">:</span>K]</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        ESS_mat[t,i] <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">msESS</span>(beta_ti)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        ESS_mat[t,i] <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">msESS</span>(beta_ti)</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -314,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To estimate moments <span class="math inline">\(E(\boldsymbol{\beta}_T \: \vert \: \boldsymbol{y}_{1:T})\)</span> and <span class="math inline">\(\text{Cov}(\boldsymbol{\beta}_T \: \vert \: \boldsymbol{y}_{1:T})\)</span> , we apply the function <code>estimateMoments.</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate the moments of the regression parameters.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>moments_mcmc <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">estimateMoments</span>(beta_chain, <span class="at">p =</span> p, <span class="at">t =</span> T, <span class="at">K =</span> K)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>moments_mcmc <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">estimateMoments</span>(beta_chain, <span class="at">p =</span> p, <span class="at">t =</span> T, <span class="at">K =</span> K)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mean_mcmc <span class="ot">&lt;-</span> moments_mcmc<span class="sc">$</span>mean</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>cov_mcmc <span class="ot">&lt;-</span> moments_mcmc<span class="sc">$</span>cov</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -344,12 +344,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#model sequence based on the credible regions method</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#based on the moments obtained from the samples produced by the Gibbs sampler</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>pcr_result_mcmc <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">pcr</span>(mean_mcmc, cov_mcmc)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>pcr_result_mcmc <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">pcr</span>(mean_mcmc, cov_mcmc)</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>solution_path_mcmc <span class="ot">&lt;-</span> pcr_result_mcmc<span class="sc">$</span>solution_path</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>coef_values_mcmc <span class="ot">&lt;-</span> pcr_result_mcmc<span class="sc">$</span>coef_values</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Based on the moments calculated by the Linear Bayes method</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>pcr_result_lb <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">pcr</span>(mean_lb, cov_lb)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>pcr_result_lb <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">pcr</span>(mean_lb, cov_lb)</span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>solution_path_lb <span class="ot">&lt;-</span> pcr_result_lb<span class="sc">$</span>solution_path</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>coef_values_lb <span class="ot">&lt;-</span> pcr_result_lb<span class="sc">$</span>coef_values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -363,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#roc-curve and auc for MCMC</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>rocObj_mcmc <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">rocPlot</span>(solution_path_mcmc,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>rocObj_mcmc <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">rocPlot</span>(solution_path_mcmc,</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                              <span class="at">true_model =</span> true_model,</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"MCMC"</span>)</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>rocObj_mcmc<span class="sc">$</span>plot</span>
@@ -371,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>AUC_mcmc <span class="ot">&lt;-</span> rocObj_mcmc<span class="sc">$</span>AUC</span>
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#roc-curve and auc for Linear Bayes</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>rocObj_lb <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">rocPlot</span>(solution_path_lb,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>rocObj_lb <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">rocPlot</span>(solution_path_lb,</span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>               <span class="at">true_model =</span> true_model,</span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Linear Bayes"</span>)</span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>rocObj_lb<span class="sc">$</span>plot</span>
@@ -380,9 +380,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>To create a variable ranking table that shows which variables are included into which models in the sequence (see Tables 4.2 - 4.3 in the thesis) in the thesis, we call the function <code>variableRanking</code>on the solution paths.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>hdglm<span class="sc">::</span><span class="fu">variableRanking</span>(solution_path_mcmc)</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>hddglm<span class="sc">::</span><span class="fu">variableRanking</span>(solution_path_mcmc)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>hdglm<span class="sc">::</span><span class="fu">variableRanking</span>(solution_path_lb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>hddglm<span class="sc">::</span><span class="fu">variableRanking</span>(solution_path_lb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="variable-selection" class="level3">
@@ -390,14 +390,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To select the final set of variables, we apply <span class="math inline">\(\text{AIC}\)</span> on the model sequences obtained based on the moments estimated with help of the Gibbs sampler and Linear Bayes method by calling the function <code>aicModel</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#results based on MCMC algorithm  </span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>aic_model_mcmc <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">aicModel</span>(solution_path_mcmc,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>aic_model_mcmc <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">aicModel</span>(solution_path_mcmc,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                                  coef_values_mcmc,</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                                  mean_mcmc,</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                                  x[T,],</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                                  y[T],</span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                                  T)</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#results based on the Linear Bayes method</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>aic_model_lb <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">aicModel</span>(solution_path_lb,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>aic_model_lb <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">aicModel</span>(solution_path_lb,</span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                                coef_values_lb,</span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                                mean_lb,</span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                                x[T,],</span>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>For the model sequence obtained based the moments estimated with the help of the MCMC algorithm, we also apply <span class="math inline">\(\text{DIC}\)</span> by calling the function <code>dicModel</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dic_model_mcmc <span class="ot">&lt;-</span> hdglm<span class="sc">::</span><span class="fu">dicModel</span>(beta_chain,</span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dic_model_mcmc <span class="ot">&lt;-</span> hddglm<span class="sc">::</span><span class="fu">dicModel</span>(beta_chain,</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                                  solution_path_mcmc,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                                  mean_mcmc,</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                                  x[T,],</span>
@@ -419,18 +419,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#evaluate the variables selected by AIC</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#results based on MCMC algorithm </span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>hdglm<span class="sc">::</span><span class="fu">variableSelectionTable</span>(aic_model_mcmc, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>hddglm<span class="sc">::</span><span class="fu">variableSelectionTable</span>(aic_model_mcmc, </span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                              relevant_param_75, </span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                              p, </span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                              T)</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#results based on Linear Bayes method     </span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>hdglm<span class="sc">::</span><span class="fu">variableSelectionTable</span>(aic_model_lb, </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>hddglm<span class="sc">::</span><span class="fu">variableSelectionTable</span>(aic_model_lb, </span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                              relevant_param_75, </span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                              p, </span>
 <span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>                              T)</span>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">#evaluate variables selected by DIC</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>hdglm<span class="sc">::</span><span class="fu">variableSelectionTable</span>(dic_model_mcmc, </span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>hddglm<span class="sc">::</span><span class="fu">variableSelectionTable</span>(dic_model_mcmc, </span>
 <span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                              relevant_param_75, </span>
 <span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>                              p, </span>
 <span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>                              T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
