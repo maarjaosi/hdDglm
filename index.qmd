@@ -16,7 +16,7 @@ This document was created using quarto.
 
 ### Installing the package hddglm
 
-As the first step, download the binary file `hddglm.zip` from [https://github.com/maarjaosi/hdDglm/blob/main/hddglm.zip](https://github.com/maarjaosi/hdDglm/blob/main/hdDglm.zip){.uri}. Then install the package by calling the function `install.packages()` with the path to the downloaded file. In the example below the file is in the Download order. **The path needs to be changed to the file location on your computer.**
+As the first step, download the binary file `hddglm.zip` from [https://github.com/maarjaosi/hddglm/blob/main/hddglm.zip](https://github.com/maarjaosi/hdDglm/blob/main/hdDglm.zip){.uri}. Then install the package by calling the function `install.packages()` with the path to the downloaded file. In the example below the file is in the Download order. **The path needs to be changed to the file location on your computer.**
 
 ```{r}
 #| eval: false
