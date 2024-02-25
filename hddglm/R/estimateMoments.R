@@ -7,7 +7,7 @@
 #' @param p Number of parameters.
 #' @param t Time step for which the moments are calculated
 #' @param K Number of runs of the MCMC algorithm .
-#' @param burn_in The burn in value for the MCMC chain.
+#' @param burn_in The burn-in period for the MCMC chain. An integer.
 #'
 #' @return A named list. The first element \code{mean} is the mean and the second element \code{cov} is the covariance of the DGLM regression parameter
 #'at time t

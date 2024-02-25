@@ -15,7 +15,7 @@ estimateMoments(chain, p, t, K, burn_in = 500)
 
 \item{K}{Number of runs of the MCMC algorithm .}
 
-\item{burn_in}{The burn in value for the MCMC chain.}
+\item{burn_in}{The burn-in period for the MCMC chain. An integer.}
 }
 \value{
 A named list. The first element \code{mean} is the mean and the second element \code{cov} is the covariance of the DGLM regression parameter

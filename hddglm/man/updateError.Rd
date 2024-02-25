@@ -11,7 +11,7 @@ updateError(gamma, beta, G)
 
 \item{beta}{Values of the regression parameters; \eqn{T \times p} matrix.}
 
-\item{G}{Evolution matrices. A function of time.}
+\item{G}{Evolution matrices. An \code{R} function \code{G(t)} that returns the \eqn{p \times p} evolution matrix \eqn{G_t} dependent on the time argument \eqn{t}.}
 }
 \value{
 Updated value of the gamma parameters. A vector of length p.

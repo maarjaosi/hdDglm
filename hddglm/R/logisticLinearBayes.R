@@ -1,17 +1,17 @@
 #' Linear Bayes Method for the dynamic logistic binary model
 #'
-#' Calculates estimates of the posterior means and covariance matrices
-#' of regression parameters of a dynamic logistic binary model using the Linear Bayes method.
+#'Calculates estimates of the posterior means and covariance matrices
+#'of regression parameters of a dynamic binary logistic model using the Linear Bayes method.
 #'
 #' @param y Realizations of the response variables. A vector of length T.
 #' @param x Covariates. A \eqn{T \times p} matrix.
 #' @param m0 Prior mean of \eqn{\boldsymbol{\beta}_0}. A vector of length p.
 #' @param C0 Prior covariance of \eqn{\boldsymbol{\beta}_0}. A \eqn{p \times p} matrix.
-#' @param G Evolution matrices. A function of time.
+#' @param G Evolution matrices. An \code{R} function \code{G(t)} that returns the \eqn{p \times p} evolution matrix \eqn{G_t} dependent on the time argument \eqn{t}.
 #' @param W Error covariance.  A \eqn{p \times p} matrix.
 #'
-#' @return A named list. First element \code{m.list} is a list containing the posterior means
-#' of the regression parameters. Second element \code{C.list} is a list containing the posterior
+#' @return A named list. First element \code{m.list} is a list of length \eqn{T} containing the posterior means
+#' of the regression parameters. Second element \code{C.list} is a list of length \eqn{T} containing the posterior
 #' covariance matrices of the regression parameters.
 #' @export
 logisticLinearBayes <- function(y,

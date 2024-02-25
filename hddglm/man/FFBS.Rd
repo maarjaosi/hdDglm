@@ -15,7 +15,7 @@ FFBS(y, x, m0, C0, G, W, V)
 
 \item{C0}{Prior covariance of \eqn{\boldsymbol{\beta}_0}. A \eqn{p \times p} matrix.}
 
-\item{G}{Evolution matrices. A function of time.}
+\item{G}{Evolution matrices. An \code{R} function \code{G(t)} that returns the \eqn{p \times p} evolution matrix \eqn{G_t} dependent on the time argument \eqn{t}.}
 
 \item{W}{Error covariance. A \eqn{p \times p} matrix.}
 
@@ -27,6 +27,5 @@ DLM \eqn{(G_t, W, 1/V_t)_{t=1}^T}. A \eqn{(T+1) \times p} matrix whose \eqn{(t,i
 is the sampled value for \eqn{\beta_{t,i}}.
 }
 \description{
-Applies the forward filtering backward sampling algorithm sample the from the posterior distribution of regression parameters of a DLM.
-T denotes the number of time steps and p the number of covariates / parameters of the DLM.
+Applies the forward filtering backward sampling algorithm sample the from the posterior distribution of the regression parameters of a DLM.
 }

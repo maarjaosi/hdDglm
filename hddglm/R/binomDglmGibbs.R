@@ -2,7 +2,7 @@
 #'
 #' @param gamma Values of the gamma parameter. Vector of length p.
 #' @param beta Values of the regression parameters; \eqn{T \times p} matrix.
-#' @param G Evolution matrices. A function of time.
+#' @param G Evolution matrices. An \code{R} function \code{G(t)} that returns the \eqn{p \times p} evolution matrix \eqn{G_t} dependent on the time argument \eqn{t}.
 #'
 #' @return Updated value of the gamma parameters. A vector of length p.
 updateError <- function(gamma,
@@ -23,7 +23,7 @@ updateError <- function(gamma,
 #'
 #' @param b parameter of the polya-gamma distribution; vector of length T
 #' @param x covariates; a Txp matrix
-#' @param beta values of the regression parameters; (T+1)xp matrix
+#' @param beta values of the regression parameters; (T)xp matrix
 #'
 #' @return T samples from a Polya-Gamma distribution, where the t-th sample is
 #' from a PG(b[t], x_t^Tbeta_t + offset) distribution
@@ -51,7 +51,7 @@ sampleLatentPg <- function(b,
 #' @param x Covariates. A \eqn{T \times p} matrix.
 #' @param m0 Prior mean of \eqn{\boldsymbol{\beta}_0}. A vector of length p
 #' @param C0 Prior covariance of \eqn{\boldsymbol{\beta}_0}. A \eqn{p \times p} matrix
-#' @param G Evolution matrices. A function of time.
+#' @param G Evolution matrices. An \code{R} function \code{G(t)} that returns the \eqn{p \times p} evolution matrix \eqn{G_t} dependent on the time argument \eqn{t}.
 #' @param omega Initial value for the latent variables. A vector of length T.
 #' @param alpha Initial values of the shape parameter for the distribution of the elements of the error covariance. Vector of length p.
 #' @param gamma Initial values of the rate parameter for the distribution of the elements of the error covariance. Vector of length p.

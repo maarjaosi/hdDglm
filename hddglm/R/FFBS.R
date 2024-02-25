@@ -1,13 +1,12 @@
 #' Forward filtering backward sampling
 #'
-#' Applies the forward filtering backward sampling algorithm sample the from the posterior distribution of regression parameters of a DLM.
-#' T denotes the number of time steps and p the number of covariates / parameters of the DLM.
+#' Applies the forward filtering backward sampling algorithm sample the from the posterior distribution of the regression parameters of a DLM.
 #'
 #' @param y Realizations of the response variables. A vector of length \eqn{T}.
 #' @param x Covariate vectors. A \eqn{T \times p} matrix.
 #' @param m0 Prior mean of \eqn{\boldsymbol{\beta}_0}. A vector of length \eqn{p}.
 #' @param C0 Prior covariance of \eqn{\boldsymbol{\beta}_0}. A \eqn{p \times p} matrix.
-#' @param G Evolution matrices. A function of time.
+#' @param G Evolution matrices. An \code{R} function \code{G(t)} that returns the \eqn{p \times p} evolution matrix \eqn{G_t} dependent on the time argument \eqn{t}.
 #' @param W Error covariance. A \eqn{p \times p} matrix.
 #' @param V Variances of the observation variables. A vector of length \eqn{T}.
 #'

@@ -11,7 +11,7 @@ sampleLatentPg(b, x, beta)
 
 \item{x}{covariates; a Txp matrix}
 
-\item{beta}{values of the regression parameters; (T+1)xp matrix}
+\item{beta}{values of the regression parameters; (T)xp matrix}
 }
 \value{
 T samples from a Polya-Gamma distribution, where the t-th sample is
