@@ -1,6 +1,6 @@
 #' DGLM Moment estimates.
 #'
-#' Estimates the mean and covariance of the regression parameter \eqn{\boldsymbol{beta}_t}
+#' Estimates the mean and covariance of the regression parameter \eqn{\boldsymbol{beta}_t} of a DGLM
 #' from values produced by an MCMC algorithm.
 #'
 #' @param chain  The MCMC chain of the regression parameters of a DGLM.

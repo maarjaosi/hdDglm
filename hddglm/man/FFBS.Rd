@@ -28,4 +28,5 @@ is the sampled value for \eqn{\beta_{t,i}}.
 }
 \description{
 Applies the forward filtering backward sampling algorithm sample the from the posterior distribution of the regression parameters of a DLM.
+Modification of the code \url{https://github.com/jordanbakerman/Dynamic/blob/main/FFBS_Function_Code.txt}.
 }

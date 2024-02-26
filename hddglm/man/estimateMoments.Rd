@@ -22,6 +22,6 @@ A named list. The first element \code{mean} is the mean and the second element \
 at time t
 }
 \description{
-Estimates the mean and covariance of the regression parameter \eqn{\boldsymbol{beta}_t}
+Estimates the mean and covariance of the regression parameter \eqn{\boldsymbol{beta}_t} of a DGLM
 from values produced by an MCMC algorithm.
 }

@@ -10,7 +10,7 @@ binomDglmGibbs(model = "binom", K, y, x, G, m0, C0, n, omega, alpha, gamma)
 \item{model}{A string indicating which observation distribution to use. Value can be either "binom" for the binomial or "nbinom" for the negative-binomial distributio.
 the default value is "binom".}
 
-\item{K}{Number of iterations of the Gibbs sampler.}
+\item{K}{Number of iterations of the Gibbs sampler. An integer.}
 
 \item{y}{Realizations of the response variables. A vector of length T.}
 
@@ -40,5 +40,5 @@ The second matrix \code{beta_chain} contains the sampled values for the regressi
 The element in the in \eqn{t}-th row and \eqn{p\cdot(k-1) + i}-th column of \code{beta_chain} contains the K-th sample of the regression parameter \eqn{\beta}_{ti}.
 }
 \description{
-Samples from the posterior distribution of a dynamic binomial model using a Gibbs sampler based on data augmentation.
+Samples from the posterior distribution of the regression parameters of a dynamic binomial model using a Gibbs sampler based on data augmentation.
 }

@@ -1,6 +1,7 @@
 #' Forward filtering backward sampling
 #'
 #' Applies the forward filtering backward sampling algorithm sample the from the posterior distribution of the regression parameters of a DLM.
+#' Modification of the code \url{https://github.com/jordanbakerman/Dynamic/blob/main/FFBS_Function_Code.txt}.
 #'
 #' @param y Realizations of the response variables. A vector of length \eqn{T}.
 #' @param x Covariate vectors. A \eqn{T \times p} matrix.

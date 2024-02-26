@@ -42,11 +42,12 @@ sampleLatentPg <- function(b,
 
 #' Gibbs sampler for dynamic binomial models.
 #'
-#' Samples from the posterior distribution of a dynamic binomial model using a Gibbs sampler based on data augmentation.
+#' Samples from the posterior distribution of the regression parameters of a dynamic binomial model using a Gibbs sampler based on data augmentation.
+#'
 #' @param model A string indicating which observation distribution to use. Value can be either "binom" for the binomial or "nbinom" for the negative-binomial distributio.
 #' the default value is "binom".
 #' @param n Number of trials. A parameter of the (negative)-binomial distribution.
-#' @param K Number of iterations of the Gibbs sampler.
+#' @param K Number of iterations of the Gibbs sampler. An integer.
 #' @param y Realizations of the response variables. A vector of length T.
 #' @param x Covariates. A \eqn{T \times p} matrix.
 #' @param m0 Prior mean of \eqn{\boldsymbol{\beta}_0}. A vector of length p
