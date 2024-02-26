@@ -23,6 +23,14 @@ As the first step, download the binary file `hddglm.zip` from [https://github.co
 install.packages("~/Downloads/hddglm.zip")
 ```
 
+Alternatively, if you have the `devtools` package installed you can also directly install the package by calling
+
+```{r}
+#| eval: false
+devtools::install_github("maarjaosi/hddglm/hddglm")
+
+```
+
 When the installation is done you can load the package. We also load the package `MASS` to sample from the multivariate normal distribution when creating the artificial data.
 
 ```{r}
