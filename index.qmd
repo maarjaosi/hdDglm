@@ -241,7 +241,7 @@ We also apply the Linear Bayes method for the dynamic binary logistic model to c
 ```{r}
 #| eval: false
 #calculate linear bayes estimates
-moments_lb <- hdDglm::logisticLinearBayes(y = y,
+moments_lb <- hddglm::logisticLinearBayes(y = y,
                                           x = x,
                                           m0 = m0,
                                           C0 = C0,
