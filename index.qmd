@@ -1,6 +1,6 @@
 ---
 title: "hddglm"
-subtitle: "High-Dimensional Dynamic Generalized Linear Models in R"
+subtitle: "High Dimensional Dynamic Generalized Linear Models in R"
 author: Maarja Osi-Baumeister
 toc: true
 format: 
