@@ -1,5 +1,5 @@
 # hddglm
-High-Dimensional Dynamic Generalized Linear Models in R
+High Dimensional Dynamic Generalized Linear Models in R
 
 
 You can install the package by downloading the file "hddglm.zip" and running
