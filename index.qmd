@@ -8,7 +8,7 @@ format:
 editor: visual
 ---
 
-This document contains a guide on the R-package `hddglm` developed as part of the master thesis *High-Dimensional Dynamic Generalized Linear Models: A Bayesian Approach*. We demonstrate the steps to that were also used for simulation study from the thesis (Chapter 4).
+This document contains a guide on the R-package `hddglm` developed as part of the master thesis *High Dimensional Dynamic Generalized Linear Models: A Bayesian Approach*. We demonstrate the steps to that were used for simulation study from the thesis (Chapter 4).
 
 This document was created using quarto.
 
